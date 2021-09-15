@@ -21,7 +21,12 @@ module top;
   // This simulator script is incomplete. As part of the tutorial you
   // will need to instantiate and connect a RegIncr model here.
   // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
+  tut4_verilog_regincr_RegIncr reg_incr(
+    .clk  (clk),
+    .reset  (reset),
+    .in   (in),
+    .out  (out)
+  );
   // Verify functionality
 
   initial begin
@@ -40,6 +45,7 @@ module top;
 
     in = 8'h00;
     #10;
+    $display( "initial out = %x", out );
     if ( out != 8'h01 ) begin
       $display( "ERROR: out, expected = %x, actual = %x", 8'h01, out );
       $finish;
